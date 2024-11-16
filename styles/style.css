@@ -4,15 +4,13 @@
   box-sizing: border-box;
 }
 
-*:focus {
-  outline: none;
-}
-
 html {
   block-size: 100%;
 }
 
 .page {
+  display: flex;
+  align-items: center;
   inline-size: 1200px;
   block-size: 100%;
   margin: auto;
@@ -70,7 +68,7 @@ ol {
 .content {
   display: flex;
   width: 1200px;
-  padding: 133px 30px;
+  padding: 0 30px;
   gap: 30px;
 }
 
@@ -115,6 +113,7 @@ ol {
 .search-form__label {
   display: flex;
   align-items: center;
+  width: fit-content;
 }
 
 .search-form__textfield {
@@ -125,10 +124,11 @@ ol {
   width: 225px;
   line-height: 21.6px;
   padding-top: 2.5px;
+  padding-left: 0;
   border: 1px solid #fff;
-  border-left: none;
-  border-right: none;
-  background-color: #1b1919;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  background-color: transparent;
 }
 
 .search-form__textfield::placeholder {
@@ -178,12 +178,17 @@ ol {
 
 .content__list {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
   height: 300px;
   padding: 2px;
   overflow: auto;
+}
+
+.content__list:has(.preloader) {
+  overflow: hidden;
+}
+
+.content__list:not(:has(.preloader)) > :not(:last-child) {
+  margin-bottom: 30px;
 }
 
 .content__card-link {
@@ -194,6 +199,8 @@ ol {
 .content__video-card {
   display: flex;
   justify-content: space-between;
+  height: 103px;
+  overflow: hidden;
 }
 
 .content__video-card-description-container {
@@ -217,22 +224,21 @@ ol {
 
 .content__video-card-thumbnail {
   width: 194px;
-  height: 103px;
   object-fit: cover;
   object-position: center;
 }
 
-.content__list-item:has(.content__card-link_current) {
-  background-color: #545050;
-}
-
 /* :active элементы */
+
+.search-form__textfield:active {
+  border-color: #fff;
+}
 
 .button:active {
   background-color: #545050;
 }
 
-.content__list-item:active {
+.content__list-item:has(.content__card-link_current) {
   background-color: #545050;
 }
 
@@ -256,6 +262,14 @@ ol {
 }
 
 /* :focus элементы */
+
+.search-form__textfield:focus {
+  outline: none;
+}
+
+.content__card-link:focus {
+  outline: none;
+}
 
 .button:focus-visible {
   outline: 1px solid #fff;
