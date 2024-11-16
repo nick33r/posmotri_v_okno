@@ -11,13 +11,13 @@ html {
 .page {
   display: flex;
   align-items: center;
-  inline-size: 1200px;
-  block-size: 100%;
   margin: auto;
   color: #fff;
   font-family: 'Fira Sans Condensed', sans-serif;
   font-size: 18px;
   background-color: #1b1919;
+  inline-size: 1200px;
+  block-size: 100%;
 }
 
 h1,
@@ -39,37 +39,38 @@ ol {
   list-style: none;
 }
 
+/* Общие правила */
+
 .visually-hidden {
   position: absolute;
-  inline-size: 1px;
-  block-size: 1px;
   overflow: hidden;
   clip: rect(0 0 0 0);
+  inline-size: 1px;
+  block-size: 1px;
   clip-path: inset(50%);
   white-space: nowrap;
 }
 
 .button {
-  cursor: pointer;
-  height: 34px;
-  width: 100%;
   align-self: self-end;
+  width: 100%;
+  height: 34px;
   border: 1px solid #fff;
-  background-color: #1b1919;
   color: #fff;
   font-family: inherit;
-  font-size: inherit;
   font-weight: 700;
+  font-size: inherit;
   line-height: 21.6px;
+  background-color: transparent;
 }
 
 /* Окно с контентом */
 
 .content {
   display: flex;
-  width: 1200px;
-  padding: 0 30px;
   gap: 30px;
+  width: 100%;
+  padding: 0 30px;
 }
 
 /* Секция с видео */
@@ -105,36 +106,35 @@ ol {
 }
 
 .search-form__fieldset-title {
-  font-size: 18px;
-  font-weight: 400;
   margin-bottom: 5px;
+  font-weight: 400;
+  font-size: 18px;
 }
 
 .search-form__label {
   display: flex;
   align-items: center;
-  width: fit-content;
 }
 
 .search-form__textfield {
-  appearance: none;
-  font-family: inherit;
-  color: inherit;
-  font-size: inherit;
   width: 225px;
-  line-height: 21.6px;
+  border: 1px solid #fff;
+  border-right-color: transparent;
+  border-left-color: transparent;
   padding-top: 2.5px;
   padding-left: 0;
-  border: 1px solid #fff;
-  border-left-color: transparent;
-  border-right-color: transparent;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: 21.6px;
   background-color: transparent;
+  appearance: none;
 }
 
 .search-form__textfield::placeholder {
+  color: rgba(255, 255, 255, 0.7);
   font-size: 18px;
   line-height: 21.6px;
-  color: rgba(255, 255, 255, 0.7);
 }
 
 .search-form__checkbox-list {
@@ -145,11 +145,11 @@ ol {
 .search-form__pseudo-checkbox {
   width: 19px;
   height: 19px;
-  border: 1px solid #1b1919;
-  outline: 1px solid #fff;
   margin-right: 5px;
-  vertical-align: text-bottom;
   margin-left: 1px;
+  border: 1px solid #1b1919;
+  /* vertical-align: text-bottom; */
+  outline: 1px solid #fff;
 }
 
 .search-form__checkbox:checked + .search-form__pseudo-checkbox {
@@ -183,23 +183,17 @@ ol {
   overflow: auto;
 }
 
-.content__list:has(.preloader) {
-  overflow: hidden;
-}
-
-.content__list:not(:has(.preloader)) > :not(:last-child) {
-  margin-bottom: 30px;
-}
-
 .content__card-link {
-  text-decoration: none;
   color: #fff;
+  text-decoration: none;
 }
 
 .content__video-card {
   display: flex;
   justify-content: space-between;
   height: 103px;
+
+  /* Защита размера карточки от переполнения описанием */
   overflow: hidden;
 }
 
@@ -210,12 +204,12 @@ ol {
 }
 
 .content__video-card-title {
+  margin-bottom: 6px;
   font-family: Oswald, sans-serif;
-  font-size: 30px;
   font-weight: 700;
+  font-size: 30px;
   line-height: 30px;
   text-transform: uppercase;
-  margin-bottom: 6px;
 }
 
 .content__video-card-description {
@@ -226,6 +220,18 @@ ol {
   width: 194px;
   object-fit: cover;
   object-position: center;
+}
+
+/* Выключаем скролл списка видео при загрузке */
+
+.content__list:has(.preloader) {
+  overflow: hidden;
+}
+
+/* Включил отступ только при отсутствии загрузки так как иначе список выдео выпадал за preloader */
+
+.content__list:not(:has(.preloader)) > :not(:last-child) {
+  margin-bottom: 30px;
 }
 
 /* :active элементы */
@@ -247,18 +253,19 @@ ol {
 .button:hover {
   text-decoration: underline;
   text-underline-offset: 2px;
+  cursor: pointer;
 }
 
 .search-form__checkbox-list .search-form__label:hover {
-  cursor: pointer;
   text-decoration: underline;
   text-underline-offset: 2px;
+  cursor: pointer;
 }
 
 .content__list-item:hover {
   text-decoration: underline;
-  cursor: pointer;
   text-underline-offset: 3px;
+  cursor: pointer;
 }
 
 /* :focus элементы */
