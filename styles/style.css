@@ -54,7 +54,7 @@ ol {
 .button {
   align-self: self-end;
   width: 100%;
-  height: 34px;
+  min-height: 34px;
   border: 1px solid #fff;
   color: #fff;
   font-family: inherit;
@@ -99,6 +99,7 @@ ol {
   display: flex;
   justify-content: space-between;
   gap: 40px;
+  padding-bottom: 5px;
 }
 
 .search-form__fieldset {
@@ -117,7 +118,7 @@ ol {
 }
 
 .search-form__textfield {
-  width: 225px;
+  min-width: 225px;
   border: 1px solid #fff;
   border-right-color: transparent;
   border-left-color: transparent;
@@ -143,9 +144,9 @@ ol {
 }
 
 .search-form__pseudo-checkbox {
-  width: 19px;
-  height: 19px;
-  margin-right: 5px;
+  width: 17px;
+  height: 17px;
+  margin-right: 6px;
   margin-left: 1px;
   border: 1px solid #1b1919;
   outline: 1px solid #fff;
@@ -163,11 +164,11 @@ ol {
 }
 
 .title {
-  padding-bottom: 24px;
+  padding-bottom: 23px;
   font-family: Oswald, sans-serif;
   font-weight: 700;
   font-size: 75px;
-  line-height: 70px;
+  line-height: 70.5px;
   text-transform: uppercase;
 }
 
@@ -191,21 +192,25 @@ ol {
   display: flex;
   justify-content: space-between;
   height: 103px;
+  padding: 2px 0;
 
   /* Защита размера карточки от переполнения описанием */
   overflow: hidden;
 }
 
 .content__video-card-description-container {
-  width: 100%;
+  max-width: 200px;
   height: 100%;
-  padding: 2px;
+  /* padding: 2px; */
 }
 
 .content__video-card-title {
-  margin-bottom: 6px;
+  padding-bottom: 6px;
   font-family: Oswald, sans-serif;
   font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
   font-size: 30px;
   line-height: 30px;
   text-transform: uppercase;
@@ -217,6 +222,7 @@ ol {
 
 .content__video-card-thumbnail {
   width: 194px;
+  flex-shrink: 0;
   object-fit: cover;
   object-position: center;
 }
