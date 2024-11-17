@@ -115,6 +115,7 @@ ol {
 .search-form__label {
   display: flex;
   align-items: center;
+  line-height: 20px;
 }
 
 .search-form__textfield {
@@ -187,6 +188,9 @@ ol {
 .content__card-link {
   color: #fff;
   text-decoration: none;
+
+  /* При отсутствии display: block в chrome не отрисовывается стилизованный outline и не срабатывает :active */
+  display: block;
 }
 
 .content__video-card {
@@ -207,14 +211,14 @@ ol {
 
 .content__video-card-title {
   padding-bottom: 6px;
+  overflow: hidden;
   font-family: Oswald, sans-serif;
   font-weight: 700;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
   font-size: 30px;
   line-height: 30px;
   text-transform: uppercase;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .content__video-card-description {
@@ -222,8 +226,8 @@ ol {
 }
 
 .content__video-card-thumbnail {
-  width: 194px;
   flex-shrink: 0;
+  width: 194px;
   object-fit: cover;
   object-position: center;
 }
@@ -258,7 +262,7 @@ ol {
 
 .content__card-link:focus-visible {
   outline: 1px solid #fff;
-  outline-offset: 1px;
+  outline-offset: -1px;
 }
 
 /* :hover элементы */
